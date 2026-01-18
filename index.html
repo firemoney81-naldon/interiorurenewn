@@ -1,23 +1,366 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+  <!-- Schema.org LocalBusiness 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "24평 아파트 리모델링 전문 서비스",
+    "image": "https://domain.com/remodeling-logo.png",
+    "url": "https://domain.com/24pyeong-remodeling",
+    "telephone": "+82-2-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "서울특별시 강남구 테헤란로 123",
+      "addressLocality": "강남구",
+      "addressRegion": "서울",
+      "postalCode": "06123",
+      "addressCountry": "KR"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": ["서울시", "경기도", "인천시", "부산시", "대구시", "광주시", "대전시", "울산시", "세종시", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "강원도", "제주도"]
+    },
+    "priceRange": "₩₩₩",
+    "description": "24평 아파트 리모델링 견적, 비용, 시공 기간 안내. 평당 가격 비교 및 2026년 트렌드를 반영한 가성비 인테리어 솔루션 제공."
+  }
+  </script>
+
+  <!-- Google Fonts: Noto Sans KR -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS Styles -->
+  <style>
+    /* Reset and Typography */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f4f7f9; color:#333; line-height:1.7; font-size:16px; }
+    header, section, footer { max-width:1000px; margin:24px auto; padding:30px; background:#ffffff; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.08); }
+    h1, h2, h3 { color:#0a4c8f; margin-bottom:16px; font-weight:700; line-height:1.4; }
+    h1 { font-size:2.8rem; text-align:center; color:#0b3d91; }
+    h2 { font-size:2.2rem; border-bottom:4px solid #cceeff; padding-bottom:12px; }
+    h3 { font-size:1.6rem; color:#2c6aa8; margin-top:24px; }
+    p, li, td, th { font-size:1.1rem; }
+    ul, ol { padding-left:25px; margin-bottom:16px; }
+    li { margin-bottom:8px; }
+    strong { color:#0b3d91; font-weight:700; }
+
+    /* Layout Components */
+    .container { max-width:1000px; margin:auto; }
+    .nav-menu ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; justify-content:center; }
+    .nav-menu li { margin:8px 12px; }
+    .nav-menu a { display:inline-block; padding:10px 20px; background:#eaf4ff; border-radius:8px; color:#0b3d91; font-weight:700; text-decoration:none; transition:background 0.3s ease; }
+    .nav-menu a:hover { background:#d4e6ff; }
+
+    /* Call to Action Button */
+    .btn-cta {
+      display:inline-block;
+      padding:16px 32px;
+      background:#4285f4;
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 6px 15px rgba(66, 133, 244, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+      text-align:center;
+      font-size:1.1rem;
+      margin-top:20px;
+    }
+    .btn-cta:hover { background:#3367d6; transform:translateY(-3px); box-shadow:0 8px 18px rgba(66, 133, 244, 0.5); }
+
+    /* Tables */
+    table { width:100%; border-collapse: separate; border-spacing: 0; margin:24px 0; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+    th, td { border:1px solid #e0eaf4; padding:15px; text-align:left; font-size:1rem; }
+    th { background:#f0f7ff; color:#0a4c8f; font-weight:700; text-align:center; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+
+    /* Forms */
+    form { background:#f9f9f9; padding:30px; border-radius:12px; border:1px solid #e0eaf4; }
+    label { display:block; margin-bottom:6px; font-weight:700; color:#333; }
+    input[type="text"], input[type="tel"], input[type="email"], select, textarea {
+      width:calc(100% - 20px); padding:10px; margin-bottom:16px; border:1px solid #ccc; border-radius:8px; font-size:1rem; box-sizing:border-box; background:#fff;
+    }
+    textarea { resize:vertical; }
+    .form-group { margin-bottom:20px; }
+    .form-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; }
+    .radio-group label { margin-right:20px; font-weight:400; }
+
+    /* Utility Classes and Sections */
+    .highlight-box { background:#eaf4ff; padding:20px; border-radius:12px; margin-top:20px; border-left:5px solid #0b3d91; }
+    .section-subtitle { font-size:1.2rem; font-weight:700; color:#0a4c8f; margin-top:20px; margin-bottom:10px; }
+    .anchor { display:block; position:relative; top:-100px; visibility:hidden; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body { padding:10px; font-size:15px; }
+      header, section, footer { margin:15px auto; padding:20px; }
+      h1 { font-size:2.2rem; }
+      h2 { font-size:1.8rem; }
+      h3 { font-size:1.4rem; }
+      .nav-menu ul { justify-content:flex-start; }
+      .nav-menu li { margin:6px 8px; }
+      .btn-cta { width:100%; padding:14px 0; font-size:1rem; }
+      .form-grid { grid-template-columns:1fr; }
+    }
+    @media print { body { background:#fff; color:#000; } }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>24평 아파트 리모델링, 2026년 최신 비용 및 시공 가이드</h1>
+      <p>가성비 좋은 24평 리모델링은 어떻게 해야 할까요? 2026년 최신 트렌드와 함께 서울, 경기, 부산, 대구 등 전국 지역별 <strong>평당 비용</strong>, <strong>시공 절차</strong>, <strong>업체 선정 노하우</strong>를 자세히 안내해 드립니다. <br />내돈내산 후기처럼 현실적인 정보를 바탕으로 성공적인 인테리어를 위한 체크리스트를 지금 확인하세요.</p>
+      <div style="text-align:center;">
+        <a class="btn-cta" href="#contact">24평 리모델링 견적 문의하기</a>
+      </div>
+    </header>
+
+    <nav aria-label="페이지 내 이동" class="nav-menu">
+      <ul>
+        <li><a href="#cost">24평 리모델링 비용 분석</a></li>
+        <li><a href="#process">리모델링 시공 절차</a></li>
+        <li><a href="#design">2026 디자인 트렌드</a></li>
+        <li><a href="#checklist">업체 선정 체크리스트</a></li>
+        <li><a href="#faq">자주 묻는 질문 (FAQ)</a></li>
+        <li><a href="#contact">견적 상담 신청</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <section id="cost">
+      <span id="cost-anchor" class="anchor"></span>
+      <h2>1. 24평 리모델링 평균 비용 분석: 평당 견적부터 가성비까지</h2>
+      <p>24평 아파트 리모델링을 계획할 때 가장 중요한 요소는 비용입니다. 리모델링 <strong>가격</strong>은 <strong>시공 범위, 자재 등급, 업체 규모, 지역별 인건비</strong> 등에 따라 크게 달라질 수 있습니다. 2026년 현재 전국 평균적인 24평 아파트 전체 리모델링 비용을 상세하게 분석해 보겠습니다. 서울, 경기 지역은 인건비와 자재 운반비가 상대적으로 높아 타 지역(부산, 대구, 대전 등)에 비해 <strong>예상 비용</strong>이 10~15% 높게 책정될 수 있습니다.</p>
+
+      <h3>1.1. 24평 리모델링 유형별 예상 비용 (2026년 기준)</h3>
+      <p>아래 표는 2026년 전국 주요 지역을 기준으로 한 24평 아파트 리모델링의 <strong>평균적인 예상 금액</strong>입니다. <strong>가성비 리모델링</strong>을 원하신다면 <strong>부분 리모델링</strong>을 고려하거나, <strong>셀프 인테리어</strong>와 전문가 시공을 병행하는 <strong>반셀프 인테리어</strong>도 좋은 대안이 될 수 있습니다. <strong>전체 리모델링</strong>은 보통 2000만원 후반대부터 시작하며, <strong>프리미엄급 시공</strong>을 원하면 5000만원 이상도 예상해야 합니다.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>주요 시공 내용</th>
+            <th>평균 예상 비용 (24평 기준)</th>
+            <th>비용에 영향을 주는 주요 변수</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>부분 리모델링</strong></td>
+            <td>주방/욕실 중점, 도배/장판, 조명 교체 등 특정 부분만 시공</td>
+            <td>₩1,000만 ~ ₩2,000만</td>
+            <td>부분 시공 범위, 자재 등급, 노후 정도</td>
+          </tr>
+          <tr>
+            <td><strong>전체 리모델링 (실속형)</strong></td>
+            <td>전체 도배/장판, 욕실 1-2개, 주방 싱크대 교체, 문/창호(샤시) 일부 교체</td>
+            <td>₩2,500만 ~ ₩3,500만</td>
+            <td>창호 교체 여부, 자재 등급, 철거 범위</td>
+          </tr>
+          <tr>
+            <td><strong>전체 리모델링 (프리미엄형)</strong></td>
+            <td>전체 창호 교체, 마루/포세린 타일 시공, 맞춤 가구(싱크대, 붙박이장), 전체 조명 및 전기 공사, 시스템 에어컨</td>
+            <td>₩3,500만 ~ ₩5,000만+</td>
+            <td>시스템 에어컨, 맞춤 가구 비율, 주방가전 통합 여부</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="section-subtitle">24평 아파트 평당 단가 계산법</p>
+      <p>리모델링 <strong>평당 단가</strong>는 전체 시공비용을 평수로 나눈 값입니다. 24평 실속형 전체 리모델링을 기준으로 하면 평당 약 100~150만원 사이가 <strong>평균 가격</strong>입니다. <strong>저렴한 곳</strong>을 찾더라도 단순히 평당 단가만 비교하는 것보다는, <strong>시공 범위와 자재 스펙</strong>을 명확히 비교해야 합니다. <strong>싼 곳</strong>만 고집하다가 나중에 추가 비용이 발생하거나 A/S 문제가 생길 수 있습니다.</p>
+
+      <h3>1.2. 24평 리모델링 주요 추가 비용 항목</h3>
+      <p>견적서를 받을 때 기본 비용 외에 숨겨진 <strong>추가 비용 항목</strong>이 없는지 꼼꼼하게 확인해야 합니다. 특히 <strong>오래된 아파트</strong>(20년 이상)는 예상치 못한 공사가 필요할 수 있습니다. <strong>추천</strong> 업체들은 이러한 부분을 미리 고지해 주지만, <strong>저렴한 업체</strong>의 경우 견적서에 포함시키지 않는 경우가 많습니다.</p>
+      <ul>
+        <li><strong>창호(샤시) 교체 비용:</strong> 24평 아파트 전체 창호를 교체하면 500~1,000만원의 추가 비용이 발생합니다. 단열 효과를 위해 필수적인 공사이지만 비용 부담이 큽니다.</li>
+        <li><strong>확장 공사:</strong> 거실이나 방 확장은 추가 단열 및 바닥 난방 공사가 필요하여 평당 비용이 더 높습니다.</li>
+        <li><strong>시스템 에어컨 설치:</strong> 천장형 시스템 에어컨은 배관 공사가 복잡해 추가 비용이 발생하며, <strong>가성비</strong>를 고려할 때 일반 에어컨을 유지하는 경우도 많습니다.</li>
+        <li><strong>철거 및 폐기물 처리비:</strong> 오래된 가구나 내부 마감재를 철거할 때 발생하는 폐기물 처리 비용은 생각보다 높을 수 있습니다.</li>
+        <li><strong>특수 자재 및 맞춤 가구:</strong> 포세린 타일, 강마루, 친환경 자재 등 고가 자재 선택 시 비용이 증가하며, 맞춤형 주방 가구(싱크대)와 붙박이장은 일반 가구보다 비쌉니다.</li>
+      </ul>
+    </section>
+
+    <section id="process">
+      <span id="process-anchor" class="anchor"></span>
+      <h2>2. 24평 아파트 리모델링 시공 절차와 기간 (2026년)</h2>
+      <p>24평 아파트 리모델링은 일반적으로 2~4주의 시공 기간이 소요됩니다. <strong>시공 절차</strong>를 미리 파악하고 순서대로 진행해야 예상치 못한 지연을 방지하고 <strong>성공적인 인테리어</strong>를 완성할 수 있습니다.</p>
+
+      <h3>2.1. 리모델링 5단계 시공 절차</h3>
+      <ol>
+        <li><strong>상담 및 견적 (D-30~):</strong> 전문가와 원하는 디자인, 예산, <strong>시공 기간</strong>에 대해 상담합니다. 견적을 비교하고 업체를 선정하며 계약서를 작성합니다.</li>
+        <li><strong>디자인 및 설계 (D-15~):</strong> 평면도와 3D 시뮬레이션을 통해 상세 디자인을 확정합니다. 자재 샘플을 고르고, 조명 계획을 수립합니다.</li>
+        <li><strong>철거 및 공사 시작 (D-Day):</strong> 기존 마감재(바닥재, 벽지, 타일 등)와 가구를 철거합니다. <strong>방수 공사, 목공사, 전기/설비 공사</strong> 등 기본 골격을 다지는 작업이 먼저 이루어집니다.</li>
+        <li><strong>내부 마감 공사 (D+10~):</strong> 욕실 타일, 주방 싱크대, 벽지, 바닥재(마루) 시공 등 마감재 작업을 진행합니다. 페인트칠, 조명 설치, 가구 설치가 이루어집니다.</li>
+        <li><strong>입주 청소 및 검수 (D+20~):</strong> 공사 완료 후 입주 청소를 진행하고, 최종 검수를 통해 하자가 없는지 확인합니다. <strong>AS 기간</strong>과 조건을 명확히 확인해야 합니다.</li>
+      </ol>
+
+      <h3>2.2. 지역별 시공 트렌드: 서울, 경기 vs. 지방</h3>
+      <p>리모델링 트렌드는 지역별로 약간의 차이를 보입니다. <strong>서울, 경기 지역</strong>은 미니멀리즘, 화이트 인테리어가 강세이며 <strong>포세린 타일</strong> 등 고급 자재의 선호도가 높습니다. 반면 <strong>지방 광역시</strong>(부산, 대구, 대전, 광주 등)는 실용성과 수납 공간 확보에 중점을 둔 인테리어를 선호하는 경향이 있습니다. <strong>평택, 동탄, 하남</strong> 등 신도시 지역은 젊은 세대의 취향을 반영한 감각적인 디자인이 인기입니다.</p>
+
+      <div class="highlight-box">
+        <h4>[참고] 2026년 리모델링 트렌드: 지속 가능한 인테리어</h4>
+        <p>2026년에는 친환경 자재 사용과 에너지 효율을 높이는 리모델링이 중요해지고 있습니다. 단열 효과가 좋은 창호 선택, 고효율 LED 조명 설치, 그리고 폐기물을 최소화하는 시공 방식이 <strong>가성비</strong>를 넘어선 <strong>가심비</strong>(가격 대비 심리적 만족도)를 높이는 방법입니다.</p>
+      </div>
+
+      <h3>2.3. 24평 리모델링의 장점과 단점</h3>
+      <p>24평 아파트는 <strong>신혼부부</strong>나 <strong>3인 가구</strong>가 거주하기에 가장 일반적인 크기입니다. <strong>장점</strong>으로는 비교적 적은 예산으로 전체 리모델링이 가능하며, <strong>단점</strong>으로는 좁은 공간을 효율적으로 활용하기 위한 디자인적인 고민이 필요합니다.</p>
+      <ul>
+        <li><strong>장점:</strong> 시공 기간이 짧고, 총 비용 부담이 상대적으로 적습니다. <strong>투룸 인테리어</strong>보다 넓고 <strong>30평대</strong>보다 저렴하여 합리적입니다.</li>
+        <li><strong>단점:</strong> <strong>가구 배치</strong>가 중요하며, 좁은 주방 공간이나 작은 방을 넓게 보이도록 하는 디자인 기법(확장 공사, 붙박이장)이 필수적입니다.</li>
+      </ul>
+
+    </section>
+
+    <section id="design">
+      <span id="design-anchor" class="anchor"></span>
+      <h2>3. 2026년 24평 아파트 리모델링 디자인 트렌드와 공간 활용</h2>
+      <p>24평은 효율적인 공간 활용이 핵심입니다. <strong>인테리어 디자인</strong>을 결정할 때는 유행에만 따르기보다 생활 방식과 가족 구성원 특성을 고려해야 합니다. <strong>2026년</strong>에는 미니멀리즘을 기반으로 한 <strong>'미니멀 럭셔리(Minimal Luxury)'</strong>와 <strong>'라이트 우드(Light Wood)'</strong> 스타일이 강세입니다.</p>
+
+      <h3>3.1. 주방 리모델링: 좁은 주방의 가성비 인테리어</h3>
+      <p>24평 아파트 주방은 대부분 'ㄱ'자형이나 'ㄷ'자형 구조로 설계됩니다. 좁은 공간을 넓어 보이게 하려면 상부장 대신 선반을 사용하거나, 하이 글로시(High-Glossy)한 화이트톤의 싱크대를 선택하는 것이 좋습니다. <strong>맞춤 주방 가구</strong>는 비용이 높지만, 효율적인 수납 공간을 확보할 수 있다는 <strong>장점</strong>이 있습니다.</p>
+      <ul>
+        <li><strong>추천:</strong> 아일랜드 식탁 활용, 매립형 후드, 인덕션 설치, 빌트인 가전 적용.</li>
+        <li><strong>주의사항:</strong> 주방의 레이아웃 변경은 급배수관 위치 변경이 필요해 <strong>추가 비용</strong>이 발생할 수 있으므로, 기존 구조를 유지하는 것이 <strong>가성비</strong>가 좋습니다.</li>
+      </ul>
+
+      <h3>3.2. 욕실 리모델링: 건식과 습식의 차이점</h3>
+      <p>욕실은 방수 공사가 가장 중요하며, 한번 시공하면 재공사가 어렵습니다. <strong>24평 리모델링</strong> 시 욕실 1개 또는 2개(안방 욕실)를 모두 진행하는 경우가 많습니다. <strong>욕실 리모델링 비용</strong>은 타일, 도기, 수전 등 자재 등급에 따라 300~500만원 선에서 결정됩니다.</p>
+      <ul>
+        <li><strong>건식 욕실:</strong> 세면대 주변만 물을 사용하고 나머지는 건식으로 사용하는 방식입니다. 관리가 쉽고 고급스러운 느낌을 주며, 안방 욕실에 적합합니다.</li>
+        <li><strong>습식 욕실:</strong> 일반적인 한국식 욕실입니다. 바닥 전체에 방수 공사를 꼼꼼히 진행해야 합니다. <strong>24평 아파트</strong>라면 청소가 용이하도록 타일 크기를 크게 하고, 톤을 밝게 하는 것이 <strong>추천</strong>됩니다.</li>
+      </ul>
+
+      <h3>3.3. 거실 및 방 리모델링: 바닥재와 조명</h3>
+      <p>24평 거실은 바닥재와 조명에 따라 분위기가 크게 달라집니다. <strong>강마루</strong>는 <strong>가성비</strong>가 좋고 내구성이 뛰어나며, <strong>포세린 타일</strong>은 고급스럽지만 시공 비용이 더 높습니다. <strong>조명</strong>은 메인등 외에 간접등(T-5)을 활용하여 은은하고 넓어 보이는 효과를 줄 수 있습니다.</p>
+
+      <h3>3.4. 전국 주요 지역별 24평 리모델링 트렌드</h3>
+      <p><strong>서울 강남, 서초</strong> 지역은 프리미엄 마감재를 선호하며, <strong>가구 맞춤 제작</strong> 비율이 높습니다. <strong>경기 수원, 용인, 평택</strong> 등 신도시 지역은 확장 공사와 시스템 에어컨 설치를 통해 실사용 면적을 극대화하는 경향이 있습니다. <strong>부산, 대구, 광주</strong> 등 지방 광역시에서는 단열과 방음에 중점을 둔 실속형 리모델링 수요가 높습니다.</p>
+
+      <div class="highlight-box">
+        <h4>[참고] 정부 지원 사업 확인: 그린 리모델링 사업</h4>
+        <p>에너지 효율 개선을 위한 그린 리모델링 사업을 이용하면 이자 지원을 받을 수 있습니다. <strong>24평 아파트</strong>의 창호, 단열 보강 공사 시 <strong>저렴한</strong> 금리로 자금 지원을 받을 수 있으니, 시공 전 국토교통부나 한국토지주택공사(LH)의 정보를 확인해 보세요. <a href="https://www.greenremodeling.or.kr/" target="_blank" rel="noopener noreferrer">그린 리모델링 공식 홈페이지</a></p>
+      </div>
+
+    </section>
+
+    <section id="checklist">
+      <span id="checklist-anchor" class="anchor"></span>
+      <h2>4. 24평 리모델링 업체 선정 및 계약 시 필수 체크리스트</h2>
+      <p><strong>내돈내산</strong> 리모델링 후기를 보면, 업체 선정의 중요성을 강조합니다. <strong>잘하는 곳</strong>을 선택해야 <strong>저렴한</strong> 가격에 <strong>높은 만족도</strong>를 얻을 수 있습니다. <strong>업체 순위</strong>나 <strong>추천</strong>만 믿지 말고, 아래 체크리스트를 통해 꼼꼼히 검토해야 합니다.</p>
+
+      <h3>4.1. 견적서 비교 분석 노하우</h3>
+      <p>견적서를 받을 때 <strong>"총액 얼마"</strong>만 확인하지 말고, 항목별 <strong>세부 내역</strong>을 확인해야 합니다. <strong>가성비</strong>를 판단하기 위해서는 <strong>자재의 스펙</strong>(예: KCC 창호, 한샘 싱크대 등)과 <strong>시공 범위</strong>를 명확히 해야 합니다. <strong>평당 단가</strong>가 낮은 업체가 오히려 자재 등급을 낮게 책정하거나, 나중에 <strong>추가 비용</strong>을 요구할 수 있으니 주의해야 합니다.</p>
+      <ul>
+        <li><strong>견적 항목 분리 확인:</strong> 철거, 목공, 전기, 설비, 마루, 도배 등 공정별로 견적이 나뉘어 있는지 확인합니다.</li>
+        <li><strong>자재 등급 명시:</strong> 자재의 브랜드, 모델명, 수량이 명시되어 있어야 정확한 비교가 가능합니다.</li>
+        <li><strong>추가 공사 범위 명시:</strong> 사전에 예상되는 <strong>추가 비용</strong> 항목(예: 문턱 제거, 비확장 방수)을 포함시켜야 합니다.</li>
+      </ul>
+
+      <h3>4.2. 업체 신뢰도 및 계약 필수 사항</h3>
+      <p><strong>리모델링 업체</strong>를 선정할 때 <strong>후기</strong>와 포트폴리오를 확인하는 것은 기본입니다. <strong>가입</strong> 업체가 얼마나 많은지보다는 실제 시공 경험과 <strong>A/S</strong>가 확실한지 확인하는 것이 중요합니다.</p>
+      <ul>
+        <li><strong>사업자 등록 및 건설업 면허:</strong> 사업자 등록증과 전문 건설업 면허가 있는지 확인합니다. <a href="https://www.bizinfo.go.kr/web/main/index.do" target="_blank" rel="noopener noreferrer">사업자 등록 확인</a></li>
+        <li><strong>A/S 보장 기간:</strong> 하자 발생 시 <strong>A/S 기간</strong>(보통 1년)과 범위를 계약서에 명시해야 합니다.</li>
+        <li><strong>보증보험 가입 여부:</strong> 건설업자라면 계약 이행 보증보험 가입이 의무입니다. 이를 통해 <strong>공사 중단</strong>이나 <strong>하자 발생 시</strong> 피해를 보상받을 수 있습니다.</li>
+        <li><strong>시공사례 확인:</strong> 24평 아파트 시공 사례를 통해 해당 업체의 스타일과 마감 수준을 파악합니다.</li>
+      </ul>
+
+      <h3>4.3. 24평 리모델링 시 주의사항: 소음 민원</h3>
+      <p><strong>아파트 리모델링</strong> 시 소음 민원 발생 가능성이 높습니다. <strong>시공 기간</strong> 중 관리사무소에 신고하고, 입주민 동의서를 받는 절차가 필수적입니다. <strong>서울, 경기 지역</strong> 아파트의 경우 더욱 엄격하게 관리됩니다. 사전에 이웃에게 공사 기간과 시간을 알리고 협조를 구해야 합니다.</p>
+
+      <div class="highlight-box">
+        <h4>[참고] 리모델링 계약 시 불공정 약관 예시 (공정거래위원회)</h4>
+        <p>계약서에 ‘천재지변이나 예상치 못한 상황 발생 시 계약 해지가 가능하며, 계약금 반환은 불가하다’와 같은 <strong>불공정 약관</strong>이 있는지 확인해야 합니다. <strong>공정거래위원회</strong>는 이러한 약관을 무효로 규정하고 있습니다. <a href="https://www.ftc.go.kr/www/main.do" target="_blank" rel="noopener noreferrer">공정거래위원회</a></p>
+      </div>
+
+    </section>
+
+    <section id="faq">
+      <span id="faq-anchor" class="anchor"></span>
+      <h2>5. 자주 묻는 질문 (FAQ): 24평 리모델링 Q&A</h2>
+      <dl>
+        <dt>Q1: 24평 아파트 리모델링 시공 기간은 얼마나 걸리나요?</dt>
+        <dd>A: 전체 리모델링(철거 포함) 기준으로 보통 <strong>2주에서 3주(14일~21일)</strong>가 소요됩니다. <strong>확장 공사</strong>나 <strong>시스템 에어컨 설치</strong>가 포함되면 1주일 정도 추가될 수 있습니다. <strong>부분 리모델링</strong>은 1주일 이내로 가능합니다.</dd>
+        <dt>Q2: 24평 리모델링에서 가장 큰 비중을 차지하는 <strong>비용</strong>은 무엇인가요?</dt>
+        <dd>A: <strong>창호(샤시) 교체 비용</strong>과 <strong>목공사(가구 포함) 비용</strong>이 가장 큰 비중을 차지합니다. 특히 창호는 단열과 방음에 직접적인 영향을 주므로 <strong>가성비</strong>를 고려하더라도 신중하게 선택해야 합니다. 목공사는 주방 싱크대, 붙박이장, 문 교체 등을 포함합니다.</dd>
+        <dt>Q3: <strong>반셀프 인테리어</strong>가 <strong>가성비</strong>가 좋은가요?</dt>
+        <dd>A: 네, <strong>반셀프 인테리어</strong>는 고객이 직접 자재를 구매하고, 전문가와 개별 공정 계약을 맺는 방식입니다. <strong>전체 리모델링</strong> 대비 <strong>비용 절감 효과</strong>가 크지만, 공정 관리와 자재 발주에 대한 이해가 필요하므로 경험이 없는 경우 <strong>실패할 확률</strong>이 높다는 <strong>단점</strong>이 있습니다.</dd>
+        <dt>Q4: 오래된 아파트(20년 이상) 리모델링 시 주의할 점은 무엇인가요?</dt>
+        <dd>A: 오래된 아파트는 <strong>누수</strong>, <strong>배관 노후</strong>, <strong>단열 문제</strong>가 발생할 확률이 높습니다. <strong>철거 시</strong> 곰팡이나 누수 부위를 확인하고, <strong>방수 공사</strong>를 꼼꼼하게 진행해야 합니다. 전기 배선과 통신선도 꼼꼼하게 점검해야 합니다.</dd>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <span id="contact-anchor" class="anchor"></span>
+      <h2>6. 24평 리모델링 견적 문의 및 상담 신청</h2>
+      <p>성공적인 24평 리모델링은 정확한 견적에서 시작됩니다. 아래 양식을 작성해 주시면 고객님의 상황에 맞는 맞춤형 <strong>평당 비용</strong> 견적과 <strong>추천</strong> 디자인을 안내해 드립니다. <strong>서울, 경기, 인천, 부산, 대구</strong> 등 전국 어디든 가능합니다.</p>
+
+      <form action="/submit" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">이름<span style="color:red;">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="예: 홍길동" />
+          </div>
+          <div class="form-group">
+            <label for="phone">연락처<span style="color:red;">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">시공 주소<span style="color:red;">*</span></label>
+          <input type="text" id="address" name="address" required placeholder="예: 서울시 강남구 삼성동 아파트" />
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="area">아파트 평수 (실평수)<span style="color:red;">*</span></label>
+            <input type="text" id="area" name="area" required placeholder="예: 24평" />
+          </div>
+          <div class="form-group">
+            <label for="old">아파트 연식<span style="color:red;">*</span></label>
+            <input type="text" id="old" name="old" required placeholder="예: 20년 이상" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="type">원하는 리모델링 범위<span style="color:red;">*</span></label>
+          <select id="type" name="type" required>
+            <option value="">선택하세요</option>
+            <option value="전체 리모델링">전체 리모델링 (샷시 포함)</option>
+            <option value="전체 리모델링(샷시 제외)">전체 리모델링 (샷시 제외)</option>
+            <option value="부분 리모델링">부분 리모델링 (주방, 욕실 등)</option>
+            <option value="기타">기타 (상세 요청사항에 기재)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="budget">예상 예산 범위<span style="color:red;">*</span></label>
+          <select id="budget" name="budget" required>
+            <option value="">선택하세요</option>
+            <option value="1000-2000만원">1,000만~2,000만원 (부분 리모델링)</option>
+            <option value="2000-3000만원">2,000만~3,000만원 (가성비 전체 리모델링)</option>
+            <option value="3000-4000만원">3,000만~4,000만원 (표준 전체 리모델링)</option>
+            <option value="4000만원+">4,000만원 이상 (프리미엄 전체 리모델링)</option>
+          </select>
+        </div>
+
+        <div class="form-group radio-group">
+          <label>이사 여부</label>
+          <input type="radio" id="move_yes" name="move_status" value="이사 예정" checked />
+          <label for="move_yes">이사 예정</label>
+          <input type="radio" id="move_no" name="move_status" value="현재 거주 중" />
+          <label for="move_no">현재 거주 중 (비거주 시공)</label>
+        </div>
+
+        <div class="form-group">
+          <label for="message">추가 요청 사항 및 질문 (리모델링 날짜, 디자인 요청 등)</label>
+          <textarea id="message" name="message" rows="5" placeholder="예: 시공 희망 날짜, 꼭 포함하고 싶은 디자인 요소, 궁금한 점 등"></textarea>
+        </div>
+
+        <div style="text-align:center;">
+          <button type="submit" class="btn-cta">견적 문의 보내기</button>
+        </div>
+      </form>
+    </section>
+
+  </div>
+  
